@@ -11,6 +11,7 @@ var createFBO    = require('gl-fbo')
 var drawTriangle = require('a-big-triangle')
 var mouseChange  = require('mouse-change')
 var perspective  = require('gl-mat4/perspective')
+var ortho        = require('gl-mat4/ortho')
 var createShader = require('./lib/shader')
 var isMobile = require('is-mobile')({ tablet: true })
 
@@ -569,11 +570,24 @@ function createScene(options) {
     pickShape[1] = Math.max(height/scene.pixelRatio, 1)|0
 
     //Compute camera parameters
-    perspective(projection,
-      scene.fovy,
-      width/height,
-      scene.zNear,
-      scene.zFar)
+
+    var orthographic = true //false
+    if(orthographic) {
+      var Q = 0.002 * scene.fovy;
+      ortho(projection,
+        -width * Q, width * Q,
+        -height * Q, height * Q,
+        scene.zNear,
+        scene.zFar
+      )
+    } else {
+      perspective(projection,
+        scene.fovy,
+        width/height,
+        scene.zNear,
+        scene.zFar
+      )
+    }
 
     //Compute model matrix
     for(var i=0; i<16; ++i) {
