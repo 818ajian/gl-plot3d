@@ -62,8 +62,6 @@ function createScene(options) {
 
   var stopped = false
 
-  var pixelRatio = options.pixelRatio || parseFloat(window.devicePixelRatio)
-
   var canvas = options.canvas
   if(!canvas) {
     canvas = document.createElement('canvas')
