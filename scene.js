@@ -163,7 +163,7 @@ function createScene(options) {
     pickRadius:   options.pickRadius || 10,
     zNear:        options.zNear || 0.01,
     zFar:         options.zFar  || 1000,
-    fovy:         options.fovy  || Math.PI/4,
+    fovy:         options.fovy  || Math.PI/4 * viewShape[0] / viewShape[1],
     clearColor:   options.clearColor || [0,0,0,0],
     autoResize:   defaultBool(options.autoResize),
     autoBounds:   defaultBool(options.autoBounds),
