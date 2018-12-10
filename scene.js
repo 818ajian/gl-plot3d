@@ -573,7 +573,7 @@ function createScene(options) {
     //Compute camera parameters
 
     if(cameraOptions.ortho === true) {
-      var Q = 0.002 * scene.fovy;
+      var Q = 0.001 * scene.fovy;
       ortho(projection,
         -width * Q, width * Q,
         -height * Q, height * Q,
