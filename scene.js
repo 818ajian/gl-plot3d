@@ -63,8 +63,6 @@ function createScene(options) {
 
   var stopped = false
 
-  var pixelRatio = options.pixelRatio || parseFloat(window.devicePixelRatio)
-
   var canvas = options.canvas
   if(!canvas) {
     canvas = document.createElement('canvas')
@@ -110,7 +108,7 @@ function createScene(options) {
     up:     [0,1,0],
     zoomMin: 0.1,
     zoomMax: 100,
-    ortho: true, //false,
+    ortho: true, // false,
     mode: 'turntable'
   }
 
@@ -139,7 +137,8 @@ function createScene(options) {
   var cameraParams = {
     view:         null,
     projection:   projection,
-    model:        model
+    model:        model,
+    ortho:        false
   }
 
   var pickDirty = true
@@ -581,6 +580,7 @@ function createScene(options) {
         scene.zNear,
         scene.zFar
       )
+      cameraParams.ortho = true
     } else {
       perspective(projection,
         scene.fovy,
@@ -588,6 +588,7 @@ function createScene(options) {
         scene.zNear,
         scene.zFar
       )
+      cameraParams.ortho = false
     }
 
     //Compute model matrix
