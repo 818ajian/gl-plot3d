@@ -103,9 +103,6 @@ function createScene(options) {
 
   var accumShader = createShader(gl)
 
-
-  console.log("options.camera=", options.camera);
-
   //Create a camera
   var cameraOptions = options.camera || {
     eye:    [2,0,0],
@@ -113,7 +110,7 @@ function createScene(options) {
     up:     [0,1,0],
     zoomMin: 0.1,
     zoomMax: 100,
-    ortho: false,
+    ortho: true, //false,
     mode: 'turntable'
   }
 
@@ -258,10 +255,6 @@ function createScene(options) {
   }
 
   scene.update = function(options) {
-
-    console.log("update... option=", options);
-
-
 
     if(stopped) {
       return
