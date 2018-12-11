@@ -108,7 +108,7 @@ function createScene(options) {
     up:     [0,1,0],
     zoomMin: 0.1,
     zoomMax: 100,
-    ortho: true, // false,
+    ortho: false,
     mode: 'turntable'
   }
 
@@ -145,6 +145,8 @@ function createScene(options) {
 
   var viewShape = [ gl.drawingBufferWidth, gl.drawingBufferHeight ]
 
+  var camera = createCamera(canvas, cameraOptions)
+
   //Create scene object
   var scene = {
     gl:           gl,
@@ -152,7 +154,7 @@ function createScene(options) {
     pixelRatio:   options.pixelRatio || parseFloat(window.devicePixelRatio),
     canvas:       canvas,
     selection:    selection,
-    camera:       createCamera(canvas, cameraOptions),
+    camera:       camera,
     axes:         axes,
     axesPixels:   null,
     spikes:       spikes,
@@ -163,7 +165,7 @@ function createScene(options) {
     pickRadius:   options.pickRadius || 10,
     zNear:        options.zNear || 0.01,
     zFar:         options.zFar  || 1000,
-    fovy:         options.fovy  || Math.PI/4 * viewShape[0] / viewShape[1],
+    fovy:         options.fovy  || Math.PI/4, // * viewShape[0] / viewShape[1],
     clearColor:   options.clearColor || [0,0,0,0],
     autoResize:   defaultBool(options.autoResize),
     autoBounds:   defaultBool(options.autoBounds),

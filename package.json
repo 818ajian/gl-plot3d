@@ -7,7 +7,7 @@
     "example": "example"
   },
   "dependencies": {
-    "3d-view-controls": "^2.2.0",
+    "3d-view-controls": "git://github.com/archmoj/3d-view-controls.git#dd8f55edc9d240a7ca6fcc4dc75099c5dc824947",
     "a-big-triangle": "^1.0.0",
     "gl-axes3d": "git://github.com/gl-vis/gl-axes3d.git#35b336df3befe40fd22b036aa3fa7f4c388ef2b5",
     "gl-fbo": "^2.0.3",
